@@ -32,12 +32,8 @@ jobs:
         with:
           ruby-version: 2.7.5
 
-      # Runs a single command using the runners shell
-      - name: run ruby command
+      - name: ruby version check
         run: ruby -v
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Run script
+        run: ruby ./first-ruby.rb
