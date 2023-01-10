@@ -15,8 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "notify"
+  notify:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -37,3 +37,5 @@ jobs:
 
       - name: Run script
         run: ruby ./first-ruby.rb
+        env:
+          LINE_TOKEN: ${{ secret.LINE_TOKEN }}
