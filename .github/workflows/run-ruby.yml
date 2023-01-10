@@ -38,4 +38,4 @@ jobs:
       - name: Run script
         run: ruby ./first-ruby.rb
         env:
-          LINE_TOKEN: ${{ secret.LINE_TOKEN }}
+          LINE_TOKEN: ${{ secrets.LINE_TOKEN }}
