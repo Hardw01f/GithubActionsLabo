@@ -3,7 +3,7 @@ require "net/http"
 uri = URI.parse("https://notify-api.line.me/api/notify")
 
 # create Net::HTTP object
-http = Net::HTTP.new(uri.host, uri.port,"127.0.0.1", 8080)
+http = Net::HTTP.new(uri.host, uri.port)
 
 # Set using SSL/TLS, default is not using SSL/TLS
 http.use_ssl = true
