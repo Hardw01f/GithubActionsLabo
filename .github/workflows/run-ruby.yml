@@ -35,7 +35,7 @@ jobs:
       - name: ruby version check
         run: ruby -v
 
-      - name: Run script
-        run: ruby ./first-ruby.rb
+      - name: notify
+        run: ruby ./notify.rb
         env:
           LINE_TOKEN: ${{ secrets.LINE_TOKEN }}
