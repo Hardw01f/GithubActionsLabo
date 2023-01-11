@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Schedule_Test
+
+# Controls when the workflow will run
+on:
+  # Scheduled Task
+  schedule:
+    - cron: "0 12 * * *"
+
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "notify"
+  notify:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Access repository files
+        run: cat ./first.txt
+
+      - uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        with:
+          ruby-version: 2.7.5
+
+      - name: ruby version check
+        run: ruby -v
+
+      - name: notify
+        run: ruby ./notify_scheduled.rb
+        env:
+          LINE_TOKEN: ${{ secrets.LINE_TOKEN }}
